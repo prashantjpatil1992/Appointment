@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Appointment.........
+{% endblock title %}  
+
+{% block content %}
+  <div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-6">
+            <form action="" method="post">
+                {% csrf_token %}
+                Name:<input type="text" name="name" class="form-control"   />
+                Age:<input type="number" name="age" class="form-control" />
+                Contact:<input type="number" name="contact" class="form-control" />
+                Appointment For :
+                <textarea name="for" class="form-control">
+                </textarea>
+                <input type="submit" value="Book Appointment" class="btn btn-success mt-2" />
+
+            </form>
+
+        </div>
+        <div class="col-lg-6">
+
+        </div>
+    </div>
+  </div>
+{% endblock content %}
