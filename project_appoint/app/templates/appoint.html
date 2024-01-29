@@ -13,20 +13,24 @@
   <div class="container mt-5">
     <div class="row">
         <div class="col-lg-6">
+          <!-- <form action="" method="post">
+            {% csrf_token %} 
+            date_filter:<input type="date" name="datefil" />
+            <input type="submit" value="submit" />
+          </form> -->
             <form action="" method="post">
                 {% csrf_token %}
                 Name:<input type="text" name="name" class="form-control"   />
                 Age:<input type="number" name="age" class="form-control" />
                 Contact:<input type="number" name="contact" class="form-control" />
-                Date:<input type="date" name="appoint_date" class="form-control" />
+                <!-- Date:<input type="date" name="appoint_date" class="form-control" /> -->
                 slot<select name="slot" class="form-select">
-                  <option>Select Free Slot</option>
+          
                   {% for i in st %}
                     
                     {% if i not in booked %}
-                      <option value="{{i}}">{{i}}</option>
-                      
-                  {% endif %}
+                      <option value="{{i}}">{{i}}</option>   
+                    {% endif %}
                   
                   {% endfor %}
                 </select>
@@ -54,7 +58,7 @@
               <td>{{i.age}}</td>
               <td>{{i.contact}}</td>
               <td>{{i.reason}}</td>
-              <td>{{i.appoint_date}}</td>
+              <td>{{i.date}}</td>
               <td>{{i.slot}}</td>
             </tr>
             {% endfor %}

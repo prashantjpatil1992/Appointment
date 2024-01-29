@@ -22,5 +22,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('base/',views.Base.as_view(),name='base'),
     path('',views.Appoint.as_view(),name='appoint'),
-    path('show/',views.show,name='show')
+    path('show/',views.show,name='show'),
+    path('doctor/',views.Doctor,name='doctor'),
+    path('done/<int:id>',views.History,name='done'),
+    path('doctsignup/',views.Doc_SignUp,name='doctsignup')
 ]
