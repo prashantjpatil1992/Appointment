@@ -11,7 +11,7 @@
       <h1 class="alert alert-danger text-center text-primary">{{i}}</h1>
     {% endfor %}
     {% else %}
-    <h1 class="alert alert-warning text-center text-danger">Staff Login/Doctor Login</h1>
+    <h1 class="alert alert-warning text-center text-danger">User Login/Patient Login</h1>
      {% endif %}
 
     <div class="row">
@@ -26,7 +26,7 @@
 
         </div>
         <div class="col-lg-6">
-            <form action="{% url 'doctlogin' %}" method="post">
+            <form action="{% url 'userlogin' %}" method="post">
                 {% csrf_token %}
                 username:<input type="text" name="uname" class="form-control" />
                 password:<input type="password" name="pass" class="form-control" />
