@@ -24,14 +24,14 @@
                 Name:<input type="text" name="name" class="form-control"   />
                 Age:<input type="number" name="age" class="form-control" />
                 Contact:<input type="number" name="contact" class="form-control" />
-                <!-- Date:<input type="date" name="appoint_date" class="form-control" /> -->
+                Date:<input type="date" name="appoint_date" class="form-control" />
                 slot<select name="slot" class="form-select">
           
                   {% for i in st %}
                     
-                    {% if i not in booked %}
+                 
                       <option value="{{i}}">{{i}}</option>   
-                    {% endif %}
+                    
                   
                   {% endfor %}
                 </select>

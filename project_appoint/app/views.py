@@ -18,29 +18,47 @@ class Appoint(View):
             data = Appointment.objects.filter(user_id=request.user)
             st = TimeSlot.objects.all().values_list('slots',flat=True)
             booked_slot = Appointment.objects.all().values_list('slot',flat=True)
+            booked_date = Appointment.objects.all().values_list('appoint_date',flat=True)
             booked_slot = list(booked_slot)
+            booked_date = list(booked_date)
+            print(booked_slot)
+            print(booked_date)
             return render(request,'appoint.html',{'data':data,'st':st,'booked':booked_slot})
+        
         else:
             return HttpResponseRedirect('/usersignup/')
         
     def post(self,request):
         if request.user.is_authenticated:
             booked_slot = Appointment.objects.filter(user_id=request.user).values_list('slot',flat=True)
+            booked_date = Appointment.objects.all().values_list('appoint_date',flat=True)
+            booked_slot = list(booked_slot)
+            booked_date = list(booked_date)
+           
             name = request.POST.get('name')
             age = request.POST.get('age')
             con = request.POST.get('contact')
             reason = request.POST.get('for')
-            # appoint_date = request.POST.get('appoint_date')
+            appoint_date = request.POST.get('appoint_date')
             slot = request.POST.get('slot')
             avd = AvailableDates.objects.all().values_list('dates',flat=True)
             avd = list(avd)
+            i=0
+            for date in range(len(booked_date)):
+                print(i)
+                i+=1
+                if appoint_date == booked_date[date] and slot != booked_slot[date]:
+                    Appointment.objects.create(name=name,age=age,contact=con,reason=reason,slot=slot,appoint_date=appoint_date,user=request.user)
+                    print(booked_date[date])
+                    print(booked_slot[date])
+
             
             if '26-01-2024' in avd:
                 if slot:
-                    if slot not in list(booked_slot):
-                        Appointment.objects.create(name=name,age=age,contact=con,reason=reason,slot=slot)
-                    else:
-                        messages.success(request,"This Slot Is Already Booked")
+                    # if slot not in list(booked_slot):
+                    print("hello")
+                    # else:
+                    #     messages.success(request,"This Slot Is Already Booked")
                 else:
                     messages.success(request,"All Slots Are Booked Pleased Apply Tomorrow Morning")
             data = Appointment.objects.filter(user_id=request.user)

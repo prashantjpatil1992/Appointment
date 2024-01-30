@@ -4,7 +4,7 @@ from .models import Appointment,TimeSlot, AvailableDates, AppointmentHistory
 # Register your models here.
 @admin.register(Appointment)
 class AdminDoc(admin.ModelAdmin):
-    list_display = ['name','age','contact','reason','date','time']
+    list_display = ['name','age','contact','reason','date','time','appoint_date']
 
 @admin.register(AppointmentHistory)
 class AdminDoc(admin.ModelAdmin):

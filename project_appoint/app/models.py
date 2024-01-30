@@ -8,6 +8,7 @@ class Appointment(models.Model):
     age = models.IntegerField()
     contact = models.CharField(max_length=100)
     reason = models.CharField(max_length=300)
+    appoint_date = models.CharField(max_length=100,null=True)
     date = models.DateField(auto_now=True)
     time = models.TimeField(auto_now=True)
     slot = models.CharField(max_length=5,null=True)
